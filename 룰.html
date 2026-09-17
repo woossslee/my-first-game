@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>🎲 보드게임 규칙</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, "맑은 고딕", sans-serif;
+            line-height: 1.7;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #f3f6fa;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            padding: 14px 18px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        .box {
+            background-color: white;
+            padding: 22px;
+            margin: 18px 0;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .important {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        .shop-rule {
+            background-color: #e8f1ff;
+            border-left: 6px solid #1976d2;
+            padding: 20px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+
+        .win {
+            background-color: #d4edda;
+            border-left: 6px solid #28a745;
+            padding: 22px;
+            margin: 18px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin: 18px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #444;
+            color: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 13px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        strong {
+            color: #1565c0;
+        }
+
+        .example {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .final-summary {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎲 보드게임 규칙</h1>
+    <p class="subtitle">
+        주사위를 굴려 다양한 이벤트를 경험하고<br>
+        결승점에 두 번 정확히 도착하세요!
+    </p>
+
+
+    <!-- 1. 게임 목표 -->
+    <h2>1. 🎯 게임 목표</h2>
+
+    <div class="box">
+        <ul>
+            <li>최대 <strong>4명</strong>이 함께 플레이할 수 있습니다.</li>
+            <li>게임판은 총 <strong>50칸</strong>으로 이루어져 있습니다.</li>
+            <li>각자의 차례에 주사위를 굴려 게임판을 이동합니다.</li>
+            <li><strong>결승점에 정확히 도착하면 1회 성공</strong>으로 기록됩니다.</li>
+            <li>결승점에 <strong>2번 정확히 도착한 플레이어가 즉시 승리</strong>합니다.</li>
+        </ul>
+    </div>
+
+
+    <!-- 2. 게임판 -->
+    <h2>2. 🗺️ 게임판</h2>
+
+    <table>
+        <tr>
+            <th>칸 종류</th>
+            <th>개수</th>
+            <th>효과</th>
+        </tr>
+
+        <tr>
+            <td>일반</td>
+            <td>20칸</td>
+            <td>아무 효과가 없습니다.</td>
+        </tr>
+
+        <tr>
+            <td>🍀 행운</td>
+            <td>8칸</td>
+            <td>행운 카드 1장을 얻습니다.</td>
+        </tr>
+
+        <tr>
+            <td>💀 불운</td>
+            <td>7칸</td>
+            <td>불운 카드 1장을 뽑아 바로 사용합니다.</td>
+        </tr>
+
+        <tr>
+            <td>🪙 화폐</td>
+            <td>5칸</td>
+            <td>코인을 얻습니다.</td>
+        </tr>
+
+        <tr>
+            <td>🛒 상점</td>
+            <td>3칸</td>
+            <td>코인을 사용하여 아이템을 구매합니다.</td>
+        </tr>
+
+        <tr>
+            <td>❓ 이벤트</td>
+            <td>7칸</td>
+            <td>이벤트 효과가 즉시 발동합니다.</td>
+        </tr>
+
+        <tr>
+            <th>총합</th>
+            <th>50칸</th>
+            <th></th>
+        </tr>
+    </table>
+
+
+    <!-- 3. 기본 규칙 -->
+    <h2>3. 🎲 기본 규칙</h2>
+
+    <div class="box">
+        <ol>
+            <li>자신의 차례가 되면 <strong>6면체 주사위 1개</strong>를 굴립니다.</li>
+
+            <li>
+                주사위에서 나온 숫자만큼
+                <strong>앞으로 이동</strong>합니다.
+            </li>
+
+            <li>
+                결승점까지 남은 칸 수와
+                주사위 숫자가 <strong>정확히 같아야</strong>
+                결승점에 도착할 수 있습니다.
+            </li>
+
+            <li>
+                결승점까지 남은 거리보다
+                주사위 숫자가 많이 나오면
+                <strong>결승점에서 뒤로 5칸 이동</strong>합니다.
+            </li>
+
+            <li>
+                결승점에 정확히 도착하면
+                <strong>1회 성공</strong>으로 기록합니다.
+            </li>
+
+            <li>
+                결승점에 도착한 후에는 다시 출발하여
+                <strong>두 번째 도착</strong>을 목표로 합니다.
+            </li>
+        </ol>
+    </div>
+
+
+    <!-- 결승점 예시 -->
+    <div class="important">
+
+        🏁 <strong>결승점 도착 예시</strong>
+
+        <div class="example">
+
+            <strong>예시 1</strong><br>
+            결승점까지 4칸 남음 + 주사위 4 →
+            🎉 <strong>정확히 도착! 1회 성공</strong>
+
+            <br><br>
+
+            <strong>예시 2</strong><br>
+            결승점까지 4칸 남음 + 주사위 5 →
+            ❌ 결승점을 지나침 →
+            <strong>결승점에서 뒤로 5칸 이동</strong>
+
+            <br><br>
+
+            <strong>예시 3</strong><br>
+            결승점까지 2칸 남음 + 주사위 1 →
+            ➡️ 1칸 이동 후 다음 턴을 기다립니다.
+        </div>
+    </div>
+
+
+    <div class="important">
+
+        ⚠️ <strong>결승점 관련 중요 규칙</strong>
+
+        <br><br>
+
+        결승점보다 많이 나온 경우
+        단순히 남은 칸에서 5칸 뒤로 가는 것이 아니라
+
+        <strong>
+            결승점을 기준으로 뒤로 5칸 이동합니다.
+        </strong>
+
+        <br><br>
+
+        또한 순간이동, 질주, 자리 바꾸기 등
+        <strong>직접 위치를 이동시키는 효과만으로는
+        결승점 도착을 달성할 수 없습니다.</strong>
+
+        <br><br>
+
+        정상 주사위 또는 허용된 재굴림/2배 주사위의
+        <strong>결과가 정확히 맞아야</strong>
+        결승점 도착으로 인정됩니다.
+    </div>
+
+
+    <!-- 4. 칸 효과 -->
+    <h2>4. 🧩 칸 효과</h2>
+
+    <div class="box">
+
+        <h3>🍀 행운 칸</h3>
+        <p>
+            행운 카드 1장을 얻습니다.
+            행운 카드는 최대 <strong>3장</strong>까지 가지고 있을 수 있습니다.
+        </p>
+
+        <h3>💀 불운 칸</h3>
+        <p>
+            불운 카드 1장을 뽑고
+            <strong>바로 사용합니다.</strong>
+        </p>
+
+        <h3>🪙 화폐 칸</h3>
+        <p>
+            정해진 양의 코인을 얻습니다.
+        </p>
+
+        <h3>🛒 상점 칸</h3>
+        <p>
+            코인을 사용하여 원하는 아이템을 구매할 수 있습니다.
+        </p>
+
+        <h3>❓ 이벤트 칸</h3>
+        <p>
+            해당 칸의 이벤트가
+            <strong>즉시 발동</strong>합니다.
+        </p>
+
+    </div>
+
+
+    <!-- 5. 행운 카드 -->
+    <h2>5. 🍀 행운 카드</h2>
+
+    <table>
+        <tr>
+            <th>카드</th>
+            <th>효과</th>
+        </tr>
+
+        <tr>
+            <td>🛡️ 방어</td>
+            <td>불운 카드의 효과를 1번 무효화합니다.</td>
+        </tr>
+
+        <tr>
+            <td>🎲 재굴림</td>
+            <td>주사위를 다시 굴리고 두 결과 중 원하는 결과를 선택합니다.</td>
+        </tr>
+
+        <tr>
+            <td>👟 질주</td>
+            <td>현재 위치에서 3칸 앞으로 이동합니다.</td>
+        </tr>
+
+        <tr>
+            <td>🔄 자리 바꾸기</td>
+            <td>다른 플레이어 1명과 위치를 서로 바꿉니다.</td>
+        </tr>
+
+        <tr>
+            <td>🎯 숫자 선택</td>
+            <td>다음 주사위 결과를 1~6 중 원하는 숫자로 정합니다.</td>
+        </tr>
+
+        <tr>
+            <td>⏪ 추락 방지</td>
+            <td>5칸 후퇴 효과를 1번 막습니다.</td>
+        </tr>
+
+        <tr>
+            <td>💰 상점 할인</td>
+            <td>다음 상점 구매 가격에서 3코인을 할인받습니다.</td>
+        </tr>
+    </table>
+
+    <div class="important">
+        ⚠️ 질주, 자리 바꾸기 등 직접 이동 효과로는
+        결승점 도착을 달성할 수 없습니다.
+    </div>
+
+
+    <!-- 6. 불운 카드 -->
+    <h2>6. 💀 불운 카드</h2>
+
+    <table>
+        <tr>
+            <th>카드</th>
+            <th>효과</th>
+        </tr>
+
+        <tr>
+            <td>💀 탈락</td>
+            <td>목숨 1개를 잃습니다. 목숨이 0개가 되면 탈락합니다.</td>
+        </tr>
+
+        <tr>
+            <td>⬇️ 추락</td>
+            <td>5칸 뒤로 이동합니다.</td>
+        </tr>
+
+        <tr>
+            <td>💸 코인 손실</td>
+            <td>
+                코인 6개를 잃습니다.
+                코인이 6개보다 적다면 가진 코인을 모두 잃습니다.
+                코인이 없으면 목숨 1개를 잃습니다.
+            </td>
+        </tr>
+
+        <tr>
+            <td>⏸️ 휴식</td>
+            <td>다음 자신의 차례를 1번 쉽니다.</td>
+        </tr>
+
+        <tr>
+            <td>🎲 주사위 저주</td>
+            <td>다음 주사위 결과에서 2를 뺍니다. 최소 결과는 1입니다.</td>
+        </tr>
+
+        <tr>
+            <td>😵 혼란</td>
+            <td>지정된 특수 칸으로 이동합니다.</td>
+        </tr>
+    </table>
+
+
+    <!-- 7. 목숨 -->
+    <h2>7. ❤️ 목숨</h2>
+
+    <div class="box">
+
+        <ul>
+            <li>게임 시작 시 모든 플레이어는 <strong>목숨 2개</strong>를 가지고 시작합니다.</li>
+
+            <li>
+                불운 카드 등의 효과로
+                목숨을 잃을 수 있습니다.
+            </li>
+
+            <li>
+                목숨이 <strong>0개가 되면 즉시 탈락</strong>합니다.
+            </li>
+
+            <li>
+                한 플레이어가 탈락해도
+                다른 플레이어들은 게임을 계속합니다.
+            </li>
+        </ul>
+
+    </div>
+
+
+    <!-- 8. 상점 -->
+    <h2>8. 🛒 상점</h2>
+
+    <div class="shop-rule">
+
+        <h3>🛒 상점 이용 방법</h3>
+
+        <ol>
+            <li>
+                자신의 말이 <strong>상점 칸에 도착하면</strong>
+                상점을 이용할 수 있습니다.
+            </li>
+
+            <li>
+                가지고 있는 코인이
+                아이템 가격보다 많거나 같아야 구매할 수 있습니다.
+            </li>
+
+            <li>
+                <strong>
+                    상점에 한 번 도착할 때마다
+                    아이템 1개만 구매할 수 있습니다.
+                </strong>
+            </li>
+
+            <li>
+                구매한 아이템의 코인은 즉시 지불합니다.
+            </li>
+
+            <li>
+                코인이 부족하면 해당 아이템을 구매할 수 없습니다.
+            </li>
+        </ol>
+
+
+        <div class="example">
+
+            💡 <strong>쉽게 말하면</strong>
+
+            <br><br>
+
+            상점에 도착했을 때 코인이 12개라면
+
+            <br><br>
+
+            ✅ 6코인짜리 아이템 <strong>1개</strong> 구매 가능
+
+            <br>
+
+            ✅ 12코인짜리 아이템 <strong>1개</strong> 구매 가능
+
+            <br><br>
+
+            ❌ 6코인짜리 아이템 2개를
+            한 번에 구매하는 것은 불가능
+
+            <br><br>
+
+            다시 상점 칸에 도착하면
+            그때 또 <strong>아이템 1개</strong>를 구매할 수 있습니다.
+
+        </div>
+
+    </div>
+
+
+    <!-- 상점 아이템 -->
+    <table>
+
+        <tr>
+            <th>아이템</th>
+            <th>가격</th>
+            <th>효과</th>
+        </tr>
+
+        <tr>
+            <td>🛡️ 방어</td>
+            <td>6코인</td>
+            <td>불운 효과 1회 무효</td>
+        </tr>
+
+        <tr>
+            <td>🎲 재굴림</td>
+            <td>6코인</td>
+            <td>주사위를 다시 굴림</td>
+        </tr>
+
+        <tr>
+            <td>👟 질주</td>
+            <td>6코인</td>
+            <td>3칸 앞으로 이동</td>
+        </tr>
+
+        <tr>
+            <td>🍀 행운 카드</td>
+            <td>9코인</td>
+            <td>행운 카드 1장 획득</td>
+        </tr>
+
+        <tr>
+            <td>⏪ 추락 방지</td>
+            <td>9코인</td>
+            <td>5칸 후퇴 1회 방지</td>
+        </tr>
+
+        <tr>
+            <td>🌀 순간이동</td>
+            <td>12코인</td>
+            <td>원하는 위치로 이동</td>
+        </tr>
+
+        <tr>
+            <td>🎲🎲 2배 주사위</td>
+            <td>1
