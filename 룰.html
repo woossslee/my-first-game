@@ -1,570 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>🎲 보드게임 규칙</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, "맑은 고딕", sans-serif;
-            line-height: 1.7;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            background-color: #f3f6fa;
-            color: #222;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            margin-top: 40px;
-            padding: 14px 18px;
-            background-color: #333;
-            color: white;
-            border-radius: 10px;
-        }
-
-        h3 {
-            margin-top: 25px;
-        }
-
-        .box {
-            background-color: white;
-            padding: 22px;
-            margin: 18px 0;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .important {
-            background-color: #fff3cd;
-            border-left: 6px solid #ffc107;
-            padding: 18px;
-            margin: 18px 0;
-            border-radius: 8px;
-        }
-
-        .shop-rule {
-            background-color: #e8f1ff;
-            border-left: 6px solid #1976d2;
-            padding: 20px;
-            margin: 18px 0;
-            border-radius: 8px;
-        }
-
-        .win {
-            background-color: #d4edda;
-            border-left: 6px solid #28a745;
-            padding: 22px;
-            margin: 18px 0;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            margin: 18px 0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        th {
-            background-color: #444;
-            color: white;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 13px;
-            text-align: center;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f8f8f8;
-        }
-
-        ul, ol {
-            padding-left: 25px;
-        }
-
-        li {
-            margin: 8px 0;
-        }
-
-        strong {
-            color: #1565c0;
-        }
-
-        .example {
-            background-color: #f7f7f7;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .final-summary {
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>보드게임 규칙 안내</title>
+  <style>
+    :root{--ink:#172033;--muted:#69758a;--blue:#3157c8;--line:#dfe5ef;--bg:#f1f4f9}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 5%,#e5edff,transparent 34%),var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Malgun Gothic",sans-serif}
+    .app{width:min(100% - 28px,820px);margin:0 auto;padding:28px 0 30px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.brand{font-weight:800;font-size:1.08rem}.count{color:var(--muted);font-size:.95rem;font-variant-numeric:tabular-nums}
+    .progress{width:96px;height:3px;margin:0 auto 20px;background:#dfe5ef;border-radius:99px;overflow:hidden}.bar{height:100%;width:14.2857%;background:#536fe0;border-radius:inherit;transition:width .25s ease}
+    .page{display:none;min-height:510px;padding:clamp(22px,5vw,42px);background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 55px #20345b13;animation:arrive .24s ease}.page.active{display:block}@keyframes arrive{from{opacity:.5;transform:translateX(10px)}to{opacity:1;transform:none}}
+    .eyebrow{margin:0 0 5px;color:var(--blue);font-weight:750;font-size:.9rem;letter-spacing:.04em}.page h1{font-size:clamp(1.7rem,5vw,2.25rem);line-height:1.25;margin:0 0 10px}.intro{margin:0 0 24px;color:var(--muted)}h2{font-size:1.08rem;margin:22px 0 8px}p{margin:8px 0}ul,ol{padding-left:1.35rem;margin:8px 0}li+li{margin-top:7px}
+    .callout{margin-top:18px;padding:14px 16px;background:#f2f5ff;border:1px solid #e0e7ff;border-radius:13px}.callout strong{color:#294bb7}.turns{display:grid;gap:10px;list-style:none;padding:0;counter-reset:turn}.turns li{counter-increment:turn;display:flex;align-items:center;gap:12px;padding:12px 14px;background:#f7f8fc;border-radius:12px}.turns li:before{content:counter(turn);display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:50%;background:#e5ebff;color:#3157c8;font-weight:800}
+    .board-preview{margin-top:22px;padding:14px;background:#f7f8fc;border:1px solid #e4e8f0;border-radius:16px}.board-title{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 10px;font-weight:750}.board-title small{color:var(--muted);font-weight:500}.shuffle-button{padding:5px 9px;border:1px solid #d8dfed;border-radius:8px;background:#fff;color:#40527c;font:600 .78rem system-ui,-apple-system,"Malgun Gothic",sans-serif;cursor:pointer}.shuffle-button:hover{background:#edf2ff}.board{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:7px;padding:12px;border:7px solid #79512f;border-radius:18px;background:linear-gradient(145deg,#56845a,#376b49);box-shadow:inset 0 0 0 2px #a87b47,0 5px 0 #563b25,0 9px 16px #203b2b30}.tile{position:relative;display:grid;place-items:center;min-height:46px;border:1px solid #c7b98f;border-radius:11px;background:linear-gradient(145deg,#fffdf4,#e9e0c9);box-shadow:0 3px 0 #b6a77c,0 4px 6px #23372225;font-size:1rem;transition:transform .15s ease}.tile:hover{transform:translateY(-2px)}.tile .num{position:absolute;top:3px;left:5px;color:#777056;font-size:.57rem;font-weight:700;line-height:1}.tile .icon{margin-top:6px}.tile .path-arrow{position:absolute;right:4px;bottom:1px;color:#748166;font-size:.62rem;font-weight:800;line-height:1}.tile.turn .path-arrow{color:#376b49;font-size:.72rem}.tile.luck{background:linear-gradient(145deg,#f0fff3,#c9efd4);border-color:#9ccea9}.tile.bad-luck{background:linear-gradient(145deg,#fff7f5,#f6d9d6);border-color:#e4b9b4}.tile.coin{background:linear-gradient(145deg,#fffbea,#f8e7ae);border-color:#e4ce82}.tile.shop{background:linear-gradient(145deg,#f3f6ff,#d7e1ff);border-color:#b7c7f0}.tile.event-tile{background:linear-gradient(145deg,#faf6ff,#e4d9f8);border-color:#cbb9e8}.tile.start{outline:2px solid #7496ff}.tile.finish{outline:2px solid #e8b94e}.board-key{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:11px;color:#59657a;font-size:.78rem}.board-key span{white-space:nowrap}.board-caption{margin:9px 0 0;color:var(--muted);font-size:.8rem}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.game-card{position:relative;min-height:142px;padding:18px;border:1px solid #ffffff72;border-radius:17px;color:white;overflow:hidden;box-shadow:inset 0 0 0 2px #ffffff24,0 8px 18px #10182822}.game-card:after{content:"";position:absolute;width:110px;height:110px;right:-25px;bottom:-34px;border:1px solid #ffffff48;border-radius:50%;box-shadow:0 0 0 12px #ffffff12,0 0 0 25px #ffffff0c}.lucky{background:linear-gradient(145deg,#14865c,#36bd82)}.game-card.lucky:after,.game-card.bad:after{display:none}.bad{background:linear-gradient(145deg,#fff0f0,#f8dada);color:#713b42;box-shadow:inset 0 0 0 2px #ffffffa8,0 6px 15px #8a3d4512}.bad .card-label{border-color:#dfb9bd;color:#894b52;background:#ffffff70}.game-card.bad p{color:#704b50}.card-icon{display:grid;place-items:center;width:46px;height:46px;margin-bottom:9px;border:1px solid #ffffff55;border-radius:14px;background:#ffffff29;font-size:1.7rem;line-height:1}.game-card.bad .card-icon{border-color:#eac5c8;background:#ffffffa8}.game-card h3{position:relative;z-index:1;margin:0 0 3px;font-size:1.1rem}.game-card p{position:relative;z-index:1;margin:0;color:#ffffffed;font-size:.93rem}.card-label{position:absolute;top:12px;right:14px;border:1px solid #ffffff72;border-radius:99px;padding:1px 8px;font-size:.72rem;letter-spacing:.04em}
+    .shop-list{display:grid;grid-template-columns:1fr auto;gap:0 14px}.shop-list span{padding:7px 0;border-bottom:1px solid #edf0f5}.shop-list span:nth-child(even){text-align:right;font-weight:700;color:#3157c8}.event-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}.event{padding:11px 13px;background:#f7f8fc;border:1px solid #edf0f5;border-radius:11px}.event b{display:block}.nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}.nav button{min-width:78px;padding:7px 10px;border:0;border-radius:9px;background:#3157c8;color:#fff;font:600 .88rem/1.2 system-ui,-apple-system,"Malgun Gothic",sans-serif;cursor:pointer}.nav button:hover:not(:disabled){background:#2344ad}.nav button:disabled{background:#cbd2df;color:#727d90;cursor:default}.dots{display:flex;align-items:center;justify-content:center;gap:4px}.dot{width:5px;height:5px;flex:0 0 5px;padding:0;border:0;border-radius:99px;background:#cbd2df;cursor:pointer}.dot.active{width:13px;flex-basis:13px;background:#536fe0}.hint{text-align:center;color:var(--muted);font-size:.8rem;margin:7px 0 0}
+    @media(max-width:560px){.app{padding-top:18px}.page{min-height:570px;border-radius:18px}.top{margin-bottom:12px}.nav button{min-width:70px;padding:7px 8px;font-size:.82rem}.dots{gap:3px}}
+    @media(max-width:420px){.board-preview{padding:9px}.board{gap:4px;padding:7px;border-width:5px}.tile{min-height:34px;border-radius:8px}.tile .icon{font-size:.82rem}.tile .num{font-size:.48rem;left:2px}.board-key{gap:5px 8px;font-size:.7rem}}
+    .board{position:relative;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(8,minmax(46px,1fr));gap:8px}.board-center{grid-column:3/7;grid-row:3/7;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-align:center;color:#f8f3d8;background:radial-gradient(ellipse at 50% 42%,#76975a,#456e4b 68%,#3b6245);border:1px solid #91a26a;border-radius:46% 42% 48% 40%;box-shadow:inset 0 0 18px #203e3440;font-size:clamp(.62rem,2vw,.9rem);font-weight:750}.board-center .scene{font-size:clamp(1.2rem,4vw,2rem);letter-spacing:.12em}.tile{z-index:1;min-height:0;border-radius:14px}.tile .icon{font-size:clamp(.8rem,2.5vw,1.1rem)}
+    @media(max-width:420px){.board{grid-template-rows:repeat(8,minmax(34px,1fr));gap:4px}.tile{min-height:0;border-radius:9px}}
+    .board{gap:0;padding:8px;grid-template-rows:repeat(8,minmax(0,1fr));aspect-ratio:1}.tile{width:100%;height:100%;aspect-ratio:1;border-radius:50%;min-height:0;box-shadow:inset 0 1px 2px #ffffffb8,0 2px 3px #23372235}.tile .icon{margin:0;font-size:clamp(.75rem,2.5vw,1.15rem)}.tile .path-arrow{right:50%;bottom:3px;transform:translateX(50%);font-size:.55rem;color:#4f6249}.tile.turn .path-arrow{font-size:.62rem}
+    @media(max-width:420px){.board{gap:0;padding:5px}.tile{min-height:0;border-radius:50%}.tile .icon{font-size:.76rem}.tile .path-arrow{font-size:.48rem}}
+    .board{display:block;aspect-ratio:1;border-radius:50%;padding:0;overflow:hidden;background:radial-gradient(circle at 50% 48%,#5d895b,#3e714d 72%,#315f43);box-shadow:inset 0 0 0 5px #9b7146,inset 0 0 0 9px #6e4a2e,0 5px 0 #563b25,0 9px 16px #203b2b30}.tile{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%) rotate(var(--angle));width:9.5%;height:7.4%;min-height:0;border-radius:50%;display:grid;place-items:center;border-width:1.5px;box-shadow:inset 0 1px 2px #ffffffd9,inset 0 -2px 3px #9b8c6850,0 3px 5px #20372250}.tile:hover{transform:translate(-50%,-50%) rotate(var(--angle))}.tile .icon{transform:rotate(var(--counter-angle))}.tile .path-arrow{right:4px;bottom:2px;transform:none}.route-line{display:none}
+    @media(max-width:420px){.board{padding:0;border-width:0}.tile{width:9.5%;height:7.4%;min-height:0;border-radius:50%}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
 </head>
-
 <body>
+<main class="app">
+  <div class="top"><div class="brand">🎲 보드게임 안내</div><div class="count" id="count" aria-live="polite">1 / 6</div></div>
+  <div class="progress" role="progressbar" aria-label="안내 진행도" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><div class="bar" id="bar"></div></div>
 
-    <h1>🎲 보드게임 규칙</h1>
-    <p class="subtitle">
-        주사위를 굴려 다양한 이벤트를 경험하고<br>
-        결승점에 두 번 정확히 도착하세요!
-    </p>
-
-
-    <!-- 1. 게임 목표 -->
-    <h2>1. 🎯 게임 목표</h2>
-
-    <div class="box">
-        <ul>
-            <li>최대 <strong>4명</strong>이 함께 플레이할 수 있습니다.</li>
-            <li>게임판은 총 <strong>50칸</strong>으로 이루어져 있습니다.</li>
-            <li>각자의 차례에 주사위를 굴려 게임판을 이동합니다.</li>
-            <li><strong>결승점에 정확히 도착하면 1회 성공</strong>으로 기록됩니다.</li>
-            <li>결승점에 <strong>2번 정확히 도착한 플레이어가 즉시 승리</strong>합니다.</li>
-        </ul>
+  <section class="page active" aria-label="게임 시작">
+    <p class="eyebrow">먼저 확인해요</p><h1>게임 준비</h1><p class="intro">최대 4명이 함께하는 50칸 보드게임입니다.</p>
+    <div class="callout" style="text-align:center;padding:28px 16px"><div style="font-size:3.3rem">🎲</div><strong style="font-size:1.25rem">주사위를 굴리고 칸의 효과를 경험해 보세요.</strong><p>각자 목숨 2개로 시작하며, 시작 지급 아이템은 없습니다.</p></div>
+    <p class="callout">목숨이 0개가 되면 탈락합니다. 탈락한 뒤에도 다른 플레이어는 게임을 계속해요.</p>
+    <div class="board-preview">
+      <p class="board-title">🗺️ 50칸 보드판 <button class="shuffle-button" id="shuffle-board" type="button">배치 섞기 ↻</button></p>
+      <div class="board" id="board" aria-label="칸 종류를 색과 아이콘으로 표시한 50칸 예시 보드판"></div>
+      <div class="board-key"><span>⬜ 일반</span><span>🍀 행운</span><span>💀 불운</span><span>🪙 코인</span><span>🛒 상점</span><span>❓ 이벤트</span><span>🏁 결승</span></div>
+      <p class="board-caption">출발 깃발에서 화살표를 따라 결승 깃발까지 가요. 특수 칸은 매 판 무작위로 배치됩니다.</p>
     </div>
+  </section>
 
+  <section class="page" aria-label="내 차례">
+    <p class="eyebrow">01 · 내 차례</p><h1>내 차례에는 뭘 하나요?</h1><p class="intro">순서대로 세 가지만 기억하면 돼요.</p>
+    <ol class="turns"><li>6면체 주사위 1개를 굴려요.</li><li>나온 수만큼 앞으로 이동해요.</li><li>도착한 칸의 효과를 적용하고 차례를 넘겨요.</li></ol>
+    <div class="callout"><strong>휴식 효과</strong><br>다음 내 차례에 주사위를 굴리지 않고 한 번 쉬어요.</div>
+  </section>
 
-    <!-- 2. 게임판 -->
-    <h2>2. 🗺️ 게임판</h2>
+  <section class="page" aria-label="결승점 규칙">
+    <p class="eyebrow">02 · 결승점</p><h1>정확히 도착해야 성공!</h1><p class="intro">결승점까지 남은 칸 수와 주사위 수가 같아야 해요.</p>
+    <div class="card-grid"><article class="event"><b>4칸 남음 + 4</b>정확히 도착! 성공 횟수 +1</article><article class="event"><b>4칸 남음 + 5</b>결승점을 지나쳐요. 결승점 기준 5칸 뒤로!</article><article class="event"><b>2칸 남음 + 1</b>한 칸 이동하고 다음 차례를 기다려요.</article></div>
+    <div class="callout">성공하면 다음 차례부터 다시 출발합니다. <strong>질주·순간이동·자리 바꾸기</strong>로는 성공 횟수를 얻을 수 없어요. 재굴림·2배 주사위는 최종 이동 수가 정확히 맞으면 성공이에요.</div>
+  </section>
 
-    <table>
-        <tr>
-            <th>칸 종류</th>
-            <th>개수</th>
-            <th>효과</th>
-        </tr>
-
-        <tr>
-            <td>일반</td>
-            <td>20칸</td>
-            <td>아무 효과가 없습니다.</td>
-        </tr>
-
-        <tr>
-            <td>🍀 행운</td>
-            <td>8칸</td>
-            <td>행운 카드 1장을 얻습니다.</td>
-        </tr>
-
-        <tr>
-            <td>💀 불운</td>
-            <td>7칸</td>
-            <td>불운 카드 1장을 뽑아 바로 사용합니다.</td>
-        </tr>
-
-        <tr>
-            <td>🪙 화폐</td>
-            <td>5칸</td>
-            <td>코인을 얻습니다.</td>
-        </tr>
-
-        <tr>
-            <td>🛒 상점</td>
-            <td>3칸</td>
-            <td>코인을 사용하여 아이템을 구매합니다.</td>
-        </tr>
-
-        <tr>
-            <td>❓ 이벤트</td>
-            <td>7칸</td>
-            <td>이벤트 효과가 즉시 발동합니다.</td>
-        </tr>
-
-        <tr>
-            <th>총합</th>
-            <th>50칸</th>
-            <th></th>
-        </tr>
-    </table>
-
-
-    <!-- 3. 기본 규칙 -->
-    <h2>3. 🎲 기본 규칙</h2>
-
-    <div class="box">
-        <ol>
-            <li>자신의 차례가 되면 <strong>6면체 주사위 1개</strong>를 굴립니다.</li>
-
-            <li>
-                주사위에서 나온 숫자만큼
-                <strong>앞으로 이동</strong>합니다.
-            </li>
-
-            <li>
-                결승점까지 남은 칸 수와
-                주사위 숫자가 <strong>정확히 같아야</strong>
-                결승점에 도착할 수 있습니다.
-            </li>
-
-            <li>
-                결승점까지 남은 거리보다
-                주사위 숫자가 많이 나오면
-                <strong>결승점에서 뒤로 5칸 이동</strong>합니다.
-            </li>
-
-            <li>
-                결승점에 정확히 도착하면
-                <strong>1회 성공</strong>으로 기록합니다.
-            </li>
-
-            <li>
-                결승점에 도착한 후에는 다시 출발하여
-                <strong>두 번째 도착</strong>을 목표로 합니다.
-            </li>
-        </ol>
+  <section class="page" aria-label="행운 카드">
+    <p class="eyebrow">03 · 행운 카드</p><h1>🍀 행운 카드</h1><p class="intro">행운 칸에 도착하면 한 장을 얻어요. 최대 3장까지 보유할 수 있어요.</p>
+    <div class="card-grid">
+      <article class="game-card lucky"><span class="card-label">행운</span><div class="card-icon">🛡️</div><h3>방어</h3><p>불운 효과 한 번 무효</p></article>
+      <article class="game-card lucky"><span class="card-label">행운</span><div class="card-icon">🎲</div><h3>재굴림</h3><p>한 번 더 굴리고 원하는 결과 선택</p></article>
+      <article class="game-card lucky"><span class="card-label">행운</span><div class="card-icon">👟</div><h3>질주</h3><p>현재 위치에서 3칸 전진</p></article>
+      <article class="game-card lucky"><span class="card-label">행운</span><div class="card-icon">🔄</div><h3>자리 바꾸기</h3><p>다른 플레이어와 위치 교체</p></article>
+      <article class="game-card lucky"><span class="card-label">행운</span><div class="card-icon">🎯</div><h3>숫자 선택</h3><p>다음 주사위를 1~6 중 선택</p></article>
+      <article class="game-card lucky"><span class="card-label">행운</span><div class="card-icon">⏪</div><h3>추락 방지</h3><p>5칸 후퇴 효과 한 번 방지</p></article>
+      <article class="game-card lucky"><span class="card-label">행운</span><div class="card-icon">💰</div><h3>상점 할인</h3><p>다음 구매 가격에서 3코인 할인</p></article>
     </div>
+  </section>
 
-
-    <!-- 결승점 예시 -->
-    <div class="important">
-
-        🏁 <strong>결승점 도착 예시</strong>
-
-        <div class="example">
-
-            <strong>예시 1</strong><br>
-            결승점까지 4칸 남음 + 주사위 4 →
-            🎉 <strong>정확히 도착! 1회 성공</strong>
-
-            <br><br>
-
-            <strong>예시 2</strong><br>
-            결승점까지 4칸 남음 + 주사위 5 →
-            ❌ 결승점을 지나침 →
-            <strong>결승점에서 뒤로 5칸 이동</strong>
-
-            <br><br>
-
-            <strong>예시 3</strong><br>
-            결승점까지 2칸 남음 + 주사위 1 →
-            ➡️ 1칸 이동 후 다음 턴을 기다립니다.
-        </div>
+  <section class="page" aria-label="불운 카드">
+    <p class="eyebrow">04 · 불운 카드</p><h1>💀 불운 카드</h1><p class="intro">불운 칸에 도착하면 한 장을 뽑아 바로 적용해요.</p>
+    <div class="card-grid">
+      <article class="game-card bad"><span class="card-label">불운</span><div class="card-icon">💀</div><h3>탈락</h3><p>목숨 1개 잃음. 0개면 탈락</p></article>
+      <article class="game-card bad"><span class="card-label">불운</span><div class="card-icon">⬇️</div><h3>추락</h3><p>5칸 뒤로 이동</p></article>
+      <article class="game-card bad"><span class="card-label">불운</span><div class="card-icon">💸</div><h3>코인 손실</h3><p>코인 6개 손실. 코인이 없으면 목숨 -1</p></article>
+      <article class="game-card bad"><span class="card-label">불운</span><div class="card-icon">⏸️</div><h3>휴식</h3><p>다음 내 차례 한 번 쉬기</p></article>
+      <article class="game-card bad"><span class="card-label">불운</span><div class="card-icon">🎲</div><h3>주사위 저주</h3><p>다음 결과 -2, 최소 1</p></article>
+      <article class="game-card bad"><span class="card-label">불운</span><div class="card-icon">😵</div><h3>혼란</h3><p>지정된 특수 칸으로 이동</p></article>
     </div>
-
-
-    <div class="important">
-
-        ⚠️ <strong>결승점 관련 중요 규칙</strong>
-
-        <br><br>
-
-        결승점보다 많이 나온 경우
-        단순히 남은 칸에서 5칸 뒤로 가는 것이 아니라
-
-        <strong>
-            결승점을 기준으로 뒤로 5칸 이동합니다.
-        </strong>
-
-        <br><br>
-
-        또한 순간이동, 질주, 자리 바꾸기 등
-        <strong>직접 위치를 이동시키는 효과만으로는
-        결승점 도착을 달성할 수 없습니다.</strong>
-
-        <br><br>
-
-        정상 주사위 또는 허용된 재굴림/2배 주사위의
-        <strong>결과가 정확히 맞아야</strong>
-        결승점 도착으로 인정됩니다.
-    </div>
-
-
-    <!-- 4. 칸 효과 -->
-    <h2>4. 🧩 칸 효과</h2>
-
-    <div class="box">
-
-        <h3>🍀 행운 칸</h3>
-        <p>
-            행운 카드 1장을 얻습니다.
-            행운 카드는 최대 <strong>3장</strong>까지 가지고 있을 수 있습니다.
-        </p>
-
-        <h3>💀 불운 칸</h3>
-        <p>
-            불운 카드 1장을 뽑고
-            <strong>바로 사용합니다.</strong>
-        </p>
-
-        <h3>🪙 화폐 칸</h3>
-        <p>
-            정해진 양의 코인을 얻습니다.
-        </p>
-
-        <h3>🛒 상점 칸</h3>
-        <p>
-            코인을 사용하여 원하는 아이템을 구매할 수 있습니다.
-        </p>
-
-        <h3>❓ 이벤트 칸</h3>
-        <p>
-            해당 칸의 이벤트가
-            <strong>즉시 발동</strong>합니다.
-        </p>
-
-    </div>
-
-
-    <!-- 5. 행운 카드 -->
-    <h2>5. 🍀 행운 카드</h2>
-
-    <table>
-        <tr>
-            <th>카드</th>
-            <th>효과</th>
-        </tr>
-
-        <tr>
-            <td>🛡️ 방어</td>
-            <td>불운 카드의 효과를 1번 무효화합니다.</td>
-        </tr>
-
-        <tr>
-            <td>🎲 재굴림</td>
-            <td>주사위를 다시 굴리고 두 결과 중 원하는 결과를 선택합니다.</td>
-        </tr>
-
-        <tr>
-            <td>👟 질주</td>
-            <td>현재 위치에서 3칸 앞으로 이동합니다.</td>
-        </tr>
-
-        <tr>
-            <td>🔄 자리 바꾸기</td>
-            <td>다른 플레이어 1명과 위치를 서로 바꿉니다.</td>
-        </tr>
-
-        <tr>
-            <td>🎯 숫자 선택</td>
-            <td>다음 주사위 결과를 1~6 중 원하는 숫자로 정합니다.</td>
-        </tr>
-
-        <tr>
-            <td>⏪ 추락 방지</td>
-            <td>5칸 후퇴 효과를 1번 막습니다.</td>
-        </tr>
-
-        <tr>
-            <td>💰 상점 할인</td>
-            <td>다음 상점 구매 가격에서 3코인을 할인받습니다.</td>
-        </tr>
-    </table>
-
-    <div class="important">
-        ⚠️ 질주, 자리 바꾸기 등 직접 이동 효과로는
-        결승점 도착을 달성할 수 없습니다.
-    </div>
-
-
-    <!-- 6. 불운 카드 -->
-    <h2>6. 💀 불운 카드</h2>
-
-    <table>
-        <tr>
-            <th>카드</th>
-            <th>효과</th>
-        </tr>
-
-        <tr>
-            <td>💀 탈락</td>
-            <td>목숨 1개를 잃습니다. 목숨이 0개가 되면 탈락합니다.</td>
-        </tr>
-
-        <tr>
-            <td>⬇️ 추락</td>
-            <td>5칸 뒤로 이동합니다.</td>
-        </tr>
-
-        <tr>
-            <td>💸 코인 손실</td>
-            <td>
-                코인 6개를 잃습니다.
-                코인이 6개보다 적다면 가진 코인을 모두 잃습니다.
-                코인이 없으면 목숨 1개를 잃습니다.
-            </td>
-        </tr>
-
-        <tr>
-            <td>⏸️ 휴식</td>
-            <td>다음 자신의 차례를 1번 쉽니다.</td>
-        </tr>
-
-        <tr>
-            <td>🎲 주사위 저주</td>
-            <td>다음 주사위 결과에서 2를 뺍니다. 최소 결과는 1입니다.</td>
-        </tr>
-
-        <tr>
-            <td>😵 혼란</td>
-            <td>지정된 특수 칸으로 이동합니다.</td>
-        </tr>
-    </table>
-
-
-    <!-- 7. 목숨 -->
-    <h2>7. ❤️ 목숨</h2>
-
-    <div class="box">
-
-        <ul>
-            <li>게임 시작 시 모든 플레이어는 <strong>목숨 2개</strong>를 가지고 시작합니다.</li>
-
-            <li>
-                불운 카드 등의 효과로
-                목숨을 잃을 수 있습니다.
-            </li>
-
-            <li>
-                목숨이 <strong>0개가 되면 즉시 탈락</strong>합니다.
-            </li>
-
-            <li>
-                한 플레이어가 탈락해도
-                다른 플레이어들은 게임을 계속합니다.
-            </li>
-        </ul>
-
-    </div>
-
-
-    <!-- 8. 상점 -->
-    <h2>8. 🛒 상점</h2>
-
-    <div class="shop-rule">
-
-        <h3>🛒 상점 이용 방법</h3>
-
-        <ol>
-            <li>
-                자신의 말이 <strong>상점 칸에 도착하면</strong>
-                상점을 이용할 수 있습니다.
-            </li>
-
-            <li>
-                가지고 있는 코인이
-                아이템 가격보다 많거나 같아야 구매할 수 있습니다.
-            </li>
-
-            <li>
-                <strong>
-                    상점에 한 번 도착할 때마다
-                    아이템 1개만 구매할 수 있습니다.
-                </strong>
-            </li>
-
-            <li>
-                구매한 아이템의 코인은 즉시 지불합니다.
-            </li>
-
-            <li>
-                코인이 부족하면 해당 아이템을 구매할 수 없습니다.
-            </li>
-        </ol>
-
-
-        <div class="example">
-
-            💡 <strong>쉽게 말하면</strong>
-
-            <br><br>
-
-            상점에 도착했을 때 코인이 12개라면
-
-            <br><br>
-
-            ✅ 6코인짜리 아이템 <strong>1개</strong> 구매 가능
-
-            <br>
-
-            ✅ 12코인짜리 아이템 <strong>1개</strong> 구매 가능
-
-            <br><br>
-
-            ❌ 6코인짜리 아이템 2개를
-            한 번에 구매하는 것은 불가능
-
-            <br><br>
-
-            다시 상점 칸에 도착하면
-            그때 또 <strong>아이템 1개</strong>를 구매할 수 있습니다.
-
-        </div>
-
-    </div>
-
-
-    <!-- 상점 아이템 -->
-    <table>
-
-        <tr>
-            <th>아이템</th>
-            <th>가격</th>
-            <th>효과</th>
-        </tr>
-
-        <tr>
-            <td>🛡️ 방어</td>
-            <td>6코인</td>
-            <td>불운 효과 1회 무효</td>
-        </tr>
-
-        <tr>
-            <td>🎲 재굴림</td>
-            <td>6코인</td>
-            <td>주사위를 다시 굴림</td>
-        </tr>
-
-        <tr>
-            <td>👟 질주</td>
-            <td>6코인</td>
-            <td>3칸 앞으로 이동</td>
-        </tr>
-
-        <tr>
-            <td>🍀 행운 카드</td>
-            <td>9코인</td>
-            <td>행운 카드 1장 획득</td>
-        </tr>
-
-        <tr>
-            <td>⏪ 추락 방지</td>
-            <td>9코인</td>
-            <td>5칸 후퇴 1회 방지</td>
-        </tr>
-
-        <tr>
-            <td>🌀 순간이동</td>
-            <td>12코인</td>
-            <td>원하는 위치로 이동</td>
-        </tr>
-
-        <tr>
-            <td>🎲🎲 2배 주사위</td>
-            <td>1
+  </section>
+
+  <section class="page" aria-label="상점과 이벤트">
+    <p class="eyebrow">05 · 상점과 이벤트</p><h1>코인을 쓰고, 이벤트를 만나요</h1><p class="intro">상점에 도착하면 아이템을 한 번에 하나 살 수 있어요.</p>
+    <div class="shop-list"><span>🛡️ 방어 · 🎲 재굴림 · 👟 질주</span><span>각 6코인</span><span>🍀 행운 카드 · ⏪ 추락 방지</span><span>각 9코인</span><span>🌀 순간이동 · 🎲🎲 2배 주사위</span><span>각 12코인</span></div>
+    <h2>이벤트 칸</h2><div class="event-list"><div class="event"><b>🪙 보너스</b>코인 +4</div><div class="event"><b>🎁 선물 상자</b>코인 +3 또는 행운 카드</div><div class="event"><b>🕳️ 함정</b>3칸 후퇴</div><div class="event"><b>❓ 선택의 순간</b>짝수: 코인 +5 · 홀수: 3칸 후퇴</div><div class="event"><b>🎲 운명의 주사위</b>주사위 결과에 따른 효과</div><div class="event"><b>👑 선두 견제</b>단독 선두에게 불리한 효과</div><div class="event"><b>🏃 질주 기회</b>다음 차례에 추가 주사위 효과</div></div>
+    <div class="callout">순간이동은 결승점 성공으로 계산하지 않아요. 2배 주사위는 두 주사위 합계가 남은 거리와 정확히 같으면 성공이에요.</div>
+  </section>
+
+  <section class="page" aria-label="승리 조건">
+    <p class="eyebrow">마지막 · 승리 조건</p><h1>🏆 두 번 도착하면 승리!</h1><p class="intro">결승점에 주사위 이동으로 정확히 도착한 횟수를 세어 주세요.</p>
+    <div class="callout" style="text-align:center;padding:30px 16px"><div style="font-size:3.2rem">🏁 × 2</div><strong style="font-size:1.3rem">정확한 도착 2회 = 즉시 승리</strong><p>한 번 도착하면 다음 차례부터 다시 출발합니다.</p></div>
+    <p class="callout">질주·순간이동·자리 바꾸기처럼 직접 위치를 옮기는 효과는 도착 횟수에 포함하지 않습니다. 목숨이 0개가 되면 탈락하며, 남은 플레이어는 계속합니다.</p>
+  </section>
+
+  <div class="nav"><button id="prev" type="button" disabled>← 이전</button><div class="dots" id="dots" aria-label="페이지 선택"></div><button id="next" type="button">다음 →</button></div>
+  <p class="hint">버튼을 누르거나 키보드의 ← → 키로 넘겨 보세요.</p>
+</main>
+<script>
+  (()=>{
+    const pages=[...document.querySelectorAll('.page')], prev=document.querySelector('#prev'), next=document.querySelector('#next');
+    const count=document.querySelector('#count'), bar=document.querySelector('#bar'), progress=document.querySelector('.progress'), dots=document.querySelector('#dots');let index=0;
+    const board=document.querySelector('#board');
+    function spiralPath(count){const totalAngle=Math.PI*2*2.75,outer=.4,inner=.045,samples=6000,points=[],lengths=[0];for(let i=0;i<=samples;i++){const t=i/samples,angle=-Math.PI/2+totalAngle*t,radius=outer-(outer-inner)*t;points.push([.5+Math.cos(angle)*radius,.5+Math.sin(angle)*radius]);if(i)lengths.push(lengths[i-1]+Math.hypot(points[i][0]-points[i-1][0],points[i][1]-points[i-1][1]))}const result=[];for(let n=0;n<count;n++){const target=lengths[samples]*n/(count-1);let i=1;while(i<samples&&lengths[i]<target)i++;const mix=(target-lengths[i-1])/(lengths[i]-lengths[i-1]);result.push([points[i-1][0]+(points[i][0]-points[i-1][0])*mix,points[i-1][1]+(points[i][1]-points[i-1][1])*mix])}return result}
+    const route=spiralPath(50);
+    function makeBoard(){
+      const kinds=[...Array(8).fill(['luck','🍀']),...Array(7).fill(['bad-luck','💀']),...Array(5).fill(['coin','🪙']),...Array(3).fill(['shop','🛒']),...Array(7).fill(['event-tile','❓'])];
+      for(let i=kinds.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[kinds[i],kinds[j]]=[kinds[j],kinds[i]]}
+      const positions=Array.from({length:48},(_,i)=>i+2);
+      for(let i=positions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[positions[i],positions[j]]=[positions[j],positions[i]]}
+      const special=new Map(positions.slice(0,kinds.length).map((position,i)=>[position,kinds[i]]));board.replaceChildren();
+      for(let n=1;n<=50;n++){const tile=document.createElement('div');const type=special.get(n);const [x,y]=route[n-1];const previous=route[Math.max(0,n-2)],following=route[Math.min(49,n)];const angle=Math.atan2(following[1]-previous[1],following[0]-previous[0])*180/Math.PI;tile.style.setProperty('--x',`${x*100}%`);tile.style.setProperty('--y',`${y*100}%`);tile.style.setProperty('--angle',`${angle}deg`);tile.style.setProperty('--counter-angle',`${-angle}deg`);tile.className='tile'+(type?' '+type[0]:'')+(n===1?' start':'')+(n===50?' finish':'');tile.setAttribute('aria-label',`${n}번 칸${type?`, ${type[1]} 칸`:''}${n===1?', 출발':''}${n===50?', 결승':''}`);const icon=document.createElement('span');icon.className='icon';icon.textContent=n===1?'🚩':n===50?'🏁':type?type[1]:'';const arrow=document.createElement('span');arrow.className='path-arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent=n===50?'':'→';tile.append(icon,arrow);board.append(tile)}
+    }
+    makeBoard();document.querySelector('#shuffle-board').addEventListener('click',makeBoard);
+    pages.forEach((page,i)=>{const dot=document.createElement('button');dot.type='button';dot.className='dot'+(i===0?' active':'');dot.setAttribute('aria-label',`${i+1}페이지로 이동`);dot.addEventListener('click',()=>show(i));dots.append(dot)});
+    function show(nextIndex){index=Math.max(0,Math.min(pages.length-1,nextIndex));pages.forEach((page,i)=>{page.classList.toggle('active',i===index);page.setAttribute('aria-hidden',i===index?'false':'true')});[...dots.children].forEach((dot,i)=>dot.classList.toggle('active',i===index));count.textContent=`${index+1} / ${pages.length}`;bar.style.width=`${(index+1)/pages.length*100}%`;progress.setAttribute('aria-valuenow',String(index+1));prev.disabled=index===0;next.disabled=index===pages.length-1;}
+    prev.addEventListener('click',()=>show(index-1));next.addEventListener('click',()=>show(index+1));document.addEventListener('keydown',event=>{if(event.key==='ArrowRight')show(index+1);if(event.key==='ArrowLeft')show(index-1)});show(0);
+  })();
+</script>
+</body>
+</html>
